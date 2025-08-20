@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{6C579E86-4B50-4C1D-B03D-89D1440F7488}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DemoOutlook1\DemoOutlook1.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DemoSpreadsheet1\DemoSpreadsheet1.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DemoOutlook1">
+        <MSBuild Projects="DemoOutlook1\DemoOutlook1.dproj"/>
+    </Target>
+    <Target Name="DemoOutlook1:Clean">
+        <MSBuild Projects="DemoOutlook1\DemoOutlook1.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DemoOutlook1:Make">
+        <MSBuild Projects="DemoOutlook1\DemoOutlook1.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DemoSpreadsheet1">
+        <MSBuild Projects="DemoSpreadsheet1\DemoSpreadsheet1.dproj"/>
+    </Target>
+    <Target Name="DemoSpreadsheet1:Clean">
+        <MSBuild Projects="DemoSpreadsheet1\DemoSpreadsheet1.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DemoSpreadsheet1:Make">
+        <MSBuild Projects="DemoSpreadsheet1\DemoSpreadsheet1.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DemoOutlook1;DemoSpreadsheet1"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DemoOutlook1:Clean;DemoSpreadsheet1:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DemoOutlook1:Make;DemoSpreadsheet1:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
